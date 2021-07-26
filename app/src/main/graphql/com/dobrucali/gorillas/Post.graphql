@@ -1,0 +1,7 @@
+query Post {
+    post(id:1) {
+        id
+        title
+        body
+    }
+}
