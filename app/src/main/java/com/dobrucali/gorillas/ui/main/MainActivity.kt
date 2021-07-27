@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val homeAsApList =
-            listOf<Int>()
+            setOf(R.id.post_detail_fragment)
 
         findNavController(R.id.nav_host_fragment)
             .addOnDestinationChangedListener { _, destination, _ ->
