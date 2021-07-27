@@ -13,7 +13,11 @@ class PostTask(
         return postRepository.getAllPosts()
     }
 
-suspend fun getPostById(postId: String): Resource<PostQuery.Data>{
+    suspend fun getPostById(postId: String): Resource<PostQuery.Data>{
         return postRepository.getPostById(postId)
+    }
+
+    suspend fun getPostsWithPageNumber(page: Int, limit: Int): Resource<PostListQuery.Data>{
+        return postRepository.getPostsWithPageNumber(page, limit)
     }
 }
