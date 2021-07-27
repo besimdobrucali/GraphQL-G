@@ -48,9 +48,26 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintWidth_percent=".8"
                     android:text="@{postItem.title}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     tools:text="Name"
+                    />
+
+                <TextView
+                    android:id="@+id/id_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/title_text_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="end"
+                    android:text="@{postItem.id}"
+                    android:textColor="@color/slate"
+                    android:textSize="14sp"
+                    tools:text="1"
                     />
 
                 <TextView
@@ -62,8 +79,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:textSize="14sp"
-                    android:text="@{postItem.id}"
-                    tools:text="Description"
+                    android:textColor="@color/steel"
+                    app:formattedBody="@{postItem.body}"
+                    tools:text="Body"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

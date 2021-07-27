@@ -3,5 +3,9 @@ query Post($id: ID!) {
         id
         title
         body
+        user {
+            name
+            username
+        }
     }
 }
