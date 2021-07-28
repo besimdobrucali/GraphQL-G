@@ -19,10 +19,6 @@ data class Resource<out T>(
             return Resource(Status.ERROR, data, error, exception = null)
         }
 
-        fun <T> exception(exception: Throwable?, data: T? = null): Resource<T> {
-            return Resource(Status.ERROR, data, error = null, exception)
-        }
-
     }
 
 }

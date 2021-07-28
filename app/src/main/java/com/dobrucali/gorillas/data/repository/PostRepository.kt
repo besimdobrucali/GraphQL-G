@@ -16,14 +16,6 @@ class PostRepository(
     private val postApi: PostApi
 ) {
 
-    suspend fun getAllPosts(): Resource<PostListQuery.Data> {
-        val apolloClient = postApi.getApolloClient()
-        return withContext(Dispatchers.IO) {
-            val response = apolloClient.query(PostListQuery()).await()
-            getDataFromResponse(response)
-        }
-    }
-
     suspend fun getPostById(postId: String): Resource<PostQuery.Data> {
         val apolloClient = postApi.getApolloClient()
         return withContext(Dispatchers.IO) {

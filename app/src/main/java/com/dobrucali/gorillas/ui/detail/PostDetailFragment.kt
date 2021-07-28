@@ -12,7 +12,7 @@ import org.koin.android.ext.android.inject
 class PostDetailFragment : BaseFragment<PostDetailViewModel>() {
 
     override val viewModel: PostDetailViewModel by inject()
-    lateinit var binding: FragmentPostDetailBinding
+    private lateinit var binding: FragmentPostDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

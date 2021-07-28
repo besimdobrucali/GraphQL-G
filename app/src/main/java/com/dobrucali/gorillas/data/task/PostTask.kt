@@ -9,10 +9,6 @@ class PostTask(
     private val postRepository: PostRepository
 ) {
 
-    suspend fun getAllPosts(): Resource<PostListQuery.Data>{
-        return postRepository.getAllPosts()
-    }
-
     suspend fun getPostById(postId: String): Resource<PostQuery.Data>{
         return postRepository.getPostById(postId)
     }

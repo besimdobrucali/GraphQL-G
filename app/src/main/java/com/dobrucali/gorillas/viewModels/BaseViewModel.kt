@@ -6,16 +6,14 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.dobrucali.gorillas.data.entity.Status
 
-abstract class BaseViewModel() : ViewModel() {
-
-    fun onScreenCreated() {}
+abstract class BaseViewModel : ViewModel() {
 
     protected val _status = MutableLiveData<Status>()
-    val status: LiveData<Status>
+    private val status: LiveData<Status>
         get() = _status
 
-    val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String>
+    val _errorMessage = MutableLiveData<String?>()
+    val errorMessage: LiveData<String?>
         get() = _errorMessage
 
     val isStatusLoading = Transformations.map(status){

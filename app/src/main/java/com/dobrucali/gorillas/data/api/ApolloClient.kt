@@ -19,6 +19,6 @@ class PostApi {
     }
 
     companion object{
-        val BASE_URL = "https://graphqlzero.almansi.me/api"
+        const val BASE_URL = "https://graphqlzero.almansi.me/api"
     }
 }

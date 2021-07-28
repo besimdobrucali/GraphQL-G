@@ -9,16 +9,17 @@ import com.dobrucali.gorillas.data.task.PostTask
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlin.math.ceil
 
 class PostsDataSource(
     private val scope: CoroutineScope,
-    val postTask: PostTask,
-    val config: PagedList.Config
+    private val postTask: PostTask,
+    private val config: PagedList.Config
 ) :
     PageKeyedDataSource<String, PostListQuery.Data1>() {
 
-    var currentPage : Int = 1
-    var maxPageLimit : Int = Int.MAX_VALUE
+    private var currentPage : Int = 1
+    private var maxPageLimit : Int = Int.MAX_VALUE
 
     override fun loadInitial(
         params: LoadInitialParams<String>,
@@ -31,9 +32,9 @@ class PostsDataSource(
                     response.isSuccess() -> {
                         val listing = response.data?.posts
                         listing?.meta?.totalCount?.let {  totalCount ->
-                            maxPageLimit = Math.ceil(totalCount.toDouble() / config.pageSize).toInt()
+                            maxPageLimit = ceil(totalCount.toDouble() / config.pageSize).toInt()
                         }
-                        val posts = listing?.data
+                        val posts = listing?.data?.filterNotNull()
                         callback.onResult(posts ?: listOf(), currentPage.toString(), currentPage.plus(1).toString())
                     }
                 }
@@ -56,7 +57,7 @@ class PostsDataSource(
                         response.isSuccess() -> {
                             currentPage = currentPage.minus(1)
                             val listing = response.data?.posts
-                            val posts = listing?.data
+                            val posts = listing?.data?.filterNotNull()
                             callback.onResult(posts ?: listOf(), currentPage.toString())
                         }
                     }
@@ -79,7 +80,7 @@ class PostsDataSource(
                         response.isSuccess() -> {
                             currentPage = currentPage.plus(1)
                             val listing = response.data?.posts
-                            val posts = listing?.data
+                            val posts = listing?.data?.filterNotNull()
                             callback.onResult(posts ?: listOf(), currentPage.toString())
                         }
                     }

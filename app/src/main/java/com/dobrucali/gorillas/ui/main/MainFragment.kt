@@ -16,7 +16,7 @@ import org.koin.android.ext.android.inject
 class MainFragment : BaseFragment<MainViewModel>() {
 
     override val viewModel: MainViewModel by inject()
-    lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

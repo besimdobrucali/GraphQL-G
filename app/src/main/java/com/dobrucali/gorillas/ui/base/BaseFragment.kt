@@ -17,8 +17,7 @@ import com.dobrucali.gorillas.utils.toast
 import com.dobrucali.gorillas.viewModels.BaseViewModel
 
 abstract class BaseFragment <VM : BaseViewModel> : Fragment() {
-    protected var initialized: Boolean = false
-        private set
+    private var initialized: Boolean = false
 
     protected abstract val viewModel: VM
 
@@ -74,7 +73,7 @@ abstract class BaseFragment <VM : BaseViewModel> : Fragment() {
         findNavController().navigate(directions)
     }
 
-    protected fun navigateUp() {
+    private fun navigateUp() {
         findNavController().navigateUp()
     }
 
